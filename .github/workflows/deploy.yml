@@ -1,3 +1,4 @@
+
 name: Build and Deploy to EC2
 
 on:
@@ -34,7 +35,8 @@ jobs:
           username: ubuntu
           key: ${{ secrets.EC2_SSH_KEY }}
           script: |
-            docker pull ${{ secrets.DOCKERHUB_USERNAME }}/tryout-app:latest
-            docker stop tryout-app || true
-            docker rm tryout-app || true
-            docker run -d --name tryout-app -p 9000:9000 ${{ secrets.DOCKERHUB_USERNAME }}/tryout-app:latest
+            sudo docker pull ${{ secrets.DOCKERHUB_USERNAME }}/tryout-app:latest
+            sudo docker stop tryout-app || true
+            sudo docker rm tryout-app || true
+            sudo docker run -d --name tryout-app -p 9000:9000 ${{ secrets.DOCKERHUB_USERNAME }}/tryout-app:latest
+
